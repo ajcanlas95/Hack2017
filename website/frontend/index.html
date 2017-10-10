@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<!--Import Google Icon Font-->
+			<link href="materialize/css/fonts.googleapis.css" rel="stylesheet">
+			<!--Import materialize.css-->
+			<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+			<!--Let browser know website is optimized for mobile-->
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		</head>
+
+		<body>
+			<!-- NavBar-->	
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo center">Hack 2017</a>
+					<ul id="nav-mobile" class="left hide-on-med-and-down">
+						 <!-- Login Trigger -->
+						<li><a class="modal-trigger" href="#login">Login</a></li>
+					</ul>
+				</div>
+			</nav>
+			
+			<!-- Login Structure -->
+			<div id="login" class="modal">
+				<div class="modal-content">
+					<h4>Hack 2017</h4>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="username" type="text" class="validate">
+							<label for="username">Username</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="organization" type="text" class="validate">
+							<label for="organization">Organization</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="password" type="password" class="validate">
+							<label for="password">Password</label>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Login</a>
+				</div>
+			</div>
+			<!--Import jQuery before materialize.js-->
+			<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+			<!--Customized JS for Hack2017-->
+			<script type="text/javascript" src="materialize/js/Hack2017.js"></script>
+		</body>
+	</html>
+        
