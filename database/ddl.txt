@@ -6,7 +6,7 @@ ln_name VARCHAR(100) NOT NULL,
 nn_name VARCHAR(100),
 pof_name VARCHAR(100),
 email VARCHAR(100),
-contact_number VARCHAR(20),
+contact_number VARCHAR(20)
 );
 CREATE TABLE Role (
 id_role INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
