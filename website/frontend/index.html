@@ -20,27 +20,53 @@
 					</ul>
 				</div>
 			</nav>
-			
 			<!-- Login Structure -->
 			<div id="login" class="modal">
 				<div class="modal-content">
 					<h4>Hack 2017</h4>
 					<div class="row">
-						<div class="input-field col s12">
-							<input id="username" type="text" class="validate">
-							<label for="username">Username</label>
+						<!-- Tab Structure-->
+						<div class="col s12">
+							<ul class="tabs">
+								<li class="tab col s6"><a href="#withoutorg">Login using Email</a></li>
+								<li class="tab col s6"><a href="#withorg">Login using Username</a></li>
+							</ul>
 						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="organization" type="text" class="validate">
-							<label for="organization">Organization</label>
+						<!-- Login using Email -->
+						<div id="withoutorg" class="row">
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="emailadd" type="text" class="validate">
+									<label for="emailadd">Email Address</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="password" type="password" class="validate">
+									<label for="password">Password</label>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="password" type="password" class="validate">
-							<label for="password">Password</label>
+						<!-- Login using Username -->
+						<div id="withorg" class="row">
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="username" type="text" class="validate">
+									<label for="username">Username</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="organization" type="text" class="validate">
+									<label for="organization">Organization</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="password" type="password" class="validate">
+									<label for="password">Password</label>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
