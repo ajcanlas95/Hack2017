@@ -14,66 +14,138 @@
 			<nav>
 				<div class="nav-wrapper">
 					<a href="#" class="brand-logo center">Hack 2017</a>
+					<a href="#" data-activates="mobile-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
 					<ul id="nav-mobile" class="left hide-on-med-and-down">
 						 <!-- Login Trigger -->
 						<li><a class="modal-trigger" href="#login">Login</a></li>
+					</ul>
+					<ul id="mobile-sidebar" class="side-nav">
+						 <!-- Login Trigger -->
+						<li><a class="modal-trigger" href="#login-mobile">Login</a></li>
 					</ul>
 				</div>
 			</nav>
 			<!-- Login Structure -->
 			<div id="login" class="modal">
-				<div class="modal-content">
-					<h4>Hack 2017</h4>
-					<div class="row">
-						<!-- Tab Structure-->
-						<div class="col s12">
-							<ul class="tabs">
-								<li class="tab col s6"><a href="#withoutorg">Login using Email</a></li>
-								<li class="tab col s6"><a href="#withorg">Login using Username</a></li>
-							</ul>
-						</div>
-						<!-- Login using Email -->
-						<div id="withoutorg" class="row">
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="emailadd" type="text" class="validate">
-									<label for="emailadd">Email Address</label>
+				<form action="" method="POST">
+					<div class="modal-content">
+						<h4>Hack 2017</h4>
+						<div class="row">
+							<!-- Tab Structure-->
+							<div class="col s12">
+								<ul class="tabs">
+									<li class="tab col s6"><a href="#withoutorg">Email Login</a></li>
+									<li class="tab col s6"><a href="#withorg">Username Login</a></li>
+								</ul>
+							</div>
+							<!-- Login using Email -->
+							<div id="withoutorg" class="row">
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="emailadd" type="text" class="validate">
+										<label for="emailadd">Email Address</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="password" type="password" class="validate">
+										<label for="password">Password</label>
+									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="password" type="password" class="validate">
-									<label for="password">Password</label>
+							<!-- Login using Username -->
+							<div id="withorg" class="row">
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="username" type="text" class="validate">
+										<label for="username">Username</label>
+									</div>
 								</div>
-							</div>
-						</div>
-						<!-- Login using Username -->
-						<div id="withorg" class="row">
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="username" type="text" class="validate">
-									<label for="username">Username</label>
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="organization" type="text" class="validate">
+										<label for="organization">Organization</label>
+									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="organization" type="text" class="validate">
-									<label for="organization">Organization</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="password" type="password" class="validate">
-									<label for="password">Password</label>
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="password" type="password" class="validate">
+										<label for="password">Password</label>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Login</a>
-				</div>
+					<div class="modal-footer">
+						<button class="btn waves-effect waves-light" type="submit" name="desktop-login">Submit
+							<i class="material-icons right">send</i>
+						</button>	
+					</div>
+				</form>
 			</div>
+
+			<!-- Login Structure for mobile -->
+			<div id="login-mobile" class="modal">
+				<form action="" method="POST">
+					<div class="modal-content">
+						<h4>Hack 2017</h4>
+						<ul class="collapsible popout" data-collapsible="accordion">
+							<!-- Login using Email -->
+							<li>
+								<div class="collapsible-header"><i class="material-icons">email</i>Email Login</div>
+								<div class="collapsible-body">
+									<div id="withoutorg" class="row">
+										<div class="row">
+											<div class="input-field col s12">
+												<input id="emailadd" type="text" class="validate">
+												<label for="emailadd">Email Address</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input id="password" type="password" class="validate">
+												<label for="password">Password</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<!-- Login using Username -->
+							<li>
+								<div class="collapsible-header"><i class="material-icons">account_circle</i>Username Login</div>
+								<div class="collapsible-body">
+									<div id="withorg" class="row">
+										<div class="row">
+											<div class="input-field col s12">
+												<input id="username" type="text" class="validate">
+												<label for="username">Username</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input id="organization" type="text" class="validate">
+												<label for="organization">Organization</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input id="password" type="password" class="validate">
+												<label for="password">Password</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer">
+						<button class="btn waves-effect waves-light" type="submit" name="mobile-login">Submit
+							<i class="material-icons right">send</i>
+						</button>		
+					</div>
+				</form>
+			</div>
+		
 			<!--Import jQuery before materialize.js-->
 			<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 			<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
