@@ -27,7 +27,7 @@
 			</nav>
 			<!-- Login Structure -->
 			<div id="login" class="modal">
-				<form action="" method="POST">
+				<form action="../backend/login.php" method="POST">
 					<div class="modal-content">
 						<h4>Hack 2017</h4>
 						<div class="row">
@@ -42,51 +42,56 @@
 							<div id="withoutorg" class="row">
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="emailadd" type="text" class="validate">
+										<input name="email" id="emailadd" type="text" class="validate">
 										<label for="emailadd">Email Address</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="password" type="password" class="validate">
+										<input name="password" id="password" type="password" class="validate">
 										<label for="password">Password</label>
 									</div>
+								</div>
+								<div class="row">
+									<button class="right btn waves-effect waves-light" type="submit" name="desktop-login">Submit
+										<i class="material-icons right">send</i>
+									</button>	
 								</div>
 							</div>
 							<!-- Login using Username -->
 							<div id="withorg" class="row">
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="username" type="text" class="validate">
+										<input name="username" id="username" type="text" class="validate">
 										<label for="username">Username</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="organization" type="text" class="validate">
+										<input name="organization" id="organization" type="text" class="validate">
 										<label for="organization">Organization</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="password" type="password" class="validate">
+										<input name="userpass" id="password" type="password" class="validate">
 										<label for="password">Password</label>
 									</div>
 								</div>
+								<div class="row">
+									<button class="right btn waves-effect waves-light" type="submit" name="desktop-user-login">Submit
+										<i class="material-icons right">send</i>
+									</button>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn waves-effect waves-light" type="submit" name="desktop-login">Submit
-							<i class="material-icons right">send</i>
-						</button>	
 					</div>
 				</form>
 			</div>
 
 			<!-- Login Structure for mobile -->
 			<div id="login-mobile" class="modal">
-				<form action="" method="POST">
+				<form action="../backend/login-mobile.php" method="POST">
 					<div class="modal-content">
 						<h4>Hack 2017</h4>
 						<ul class="collapsible popout" data-collapsible="accordion">
@@ -97,15 +102,20 @@
 									<div id="withoutorg" class="row">
 										<div class="row">
 											<div class="input-field col s12">
-												<input id="emailadd" type="text" class="validate">
+												<input name="mobile_email" id="emailadd" type="text" class="validate">
 												<label for="emailadd">Email Address</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<input id="password" type="password" class="validate">
+												<input name="mobile_password" id="password" type="password" class="validate">
 												<label for="password">Password</label>
 											</div>
+										</div>
+										<div class="row">
+											<button class="right btn waves-effect waves-light" type="submit" name="mobile-login">Submit
+												<i class="material-icons right">send</i>
+											</button>	
 										</div>
 									</div>
 								</div>
@@ -117,31 +127,31 @@
 									<div id="withorg" class="row">
 										<div class="row">
 											<div class="input-field col s12">
-												<input id="username" type="text" class="validate">
+												<input name="mobile_username" id="username" type="text" class="validate">
 												<label for="username">Username</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<input id="organization" type="text" class="validate">
+												<input name="mobile_organization" id="organization" type="text" class="validate">
 												<label for="organization">Organization</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<input id="password" type="password" class="validate">
+												<input name="mobile_userpass" id="password" type="password" class="validate">
 												<label for="password">Password</label>
 											</div>
+										</div>
+										<div class="row">
+											<button class="right btn waves-effect waves-light" type="submit" name="mobile-user-login">Submit
+												<i class="material-icons right">send</i>
+											</button>
 										</div>
 									</div>
 								</div>
 							</li>
 						</ul>
-					</div>
-					<div class="modal-footer">
-						<button class="btn waves-effect waves-light" type="submit" name="mobile-login">Submit
-							<i class="material-icons right">send</i>
-						</button>		
 					</div>
 				</form>
 			</div>
