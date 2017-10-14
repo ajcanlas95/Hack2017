@@ -13,6 +13,15 @@ if (isset($_POST['register'])) {
 	$orgName = validate($_POST['organization']); 
 	$preOrg = validate($_POST['organization_prefix']);
 	
+	$words = explode(" ", $orgName);
+	$acronym = "";
+
+	foreach ($words as $first_letter) {
+		$acronym .=$first_letter[0];
+		echo $acronym;
+	}
+
+
 	$fName = ucwords($fName);
 	$mName = ucwords($mName);
 	$lName = ucwords($lName);
@@ -22,27 +31,27 @@ if (isset($_POST['register'])) {
 	
 	$orgExists = checkOrganization($conn,$orgName);
 
-	if (mysqli_num_rows($orgExists)<1) {
-		$registerInfoAndOrg = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
+	// if (mysqli_num_rows($orgExists)<1) {
+	// 	$registerInfoAndOrg = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
 
-		if ($registerInfoAndOrg) {
-			$registerInfoAndOrg = registerOrganization($conn,$orgName,$preOrg);
+	// 	if ($registerInfoAndOrg) {
+	// 		$registerInfoAndOrg = registerOrganization($conn,$orgName,$preOrg);
 
-			if ($registerOrg) {
-				echo "Successful Registration and Organization";
-			}else{
-				echo "Org Registration Unsuccessful";
-			}
+	// 		if ($registerOrg) {
+	// 			echo "Successful Registration and Organization";
+	// 		}else{
+	// 			echo "Org Registration Unsuccessful";
+	// 		}
 
-		}else{
-			echo "Info Registration Unsuccessful";
-		}
-	}else{
-		$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
-		if ($registerInfo) {
-			echo "Successful Registration of Info";
-		}
-	}
+	// 	}else{
+	// 		echo "Info Registration Unsuccessful";
+	// 	}
+	// }else{
+	// 	$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
+	// 	if ($registerInfo) {
+	// 		echo "Successful Registration of Info";
+	// 	}
+	// }
 
 }
 
