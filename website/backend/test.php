@@ -19,12 +19,12 @@ $resultColumn = displayAllColumn($conn,$database,$table);
 $resultRow = displayAllRows($conn);
 
 	
-while ($dataRow = mysqli_fetch_assoc($resultRow)) {
-	foreach ($dataRow as $keyData => $valueData) {
-		echo $keyData."<br>".$valueData."";
-	}
-	echo "<br>";
-}
+// while ($dataRow = mysqli_fetch_assoc($resultRow)) {
+// 	foreach ($dataRow as $keyData => $valueData) {
+// 		echo $keyData."<br>".$valueData."";
+// 	}
+// 	echo "<br>";
+// }
 
 
 
