@@ -15,6 +15,7 @@ if (isset($_POST['register'])) {
 	
 	$words = explode(" ", $orgName);
 
+
 	foreach ($words as $first_letter) {
 		$preOrg.=  $first_letter[0];
 		
