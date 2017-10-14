@@ -12,9 +12,7 @@ if (isset($_POST['register'])) {
 	$cNumber = validate($_POST['contact_number']); 
 	$orgName = validate($_POST['organization']); 
 	$preOrg = "";
-	
 	$words = explode(" ", $orgName);
-
 
 	foreach ($words as $first_letter) {
 		$preOrg.=  $first_letter[0];
