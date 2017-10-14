@@ -51,14 +51,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="input-field col s8">
+							<div class="input-field col s12">
 								<input name="organization" id="organization" type="text" class="validate" required="true" style="text-transform: capitalize;">
 								<label for="organization">Organization*</label>
-							</div>
-							<div class="input-field col s4">
-								<input name="organization_prefix" id="organization_prefix" type="text" class="validate" required="true" placeholder="CFC" style="text-transform: uppercase;">
-								<label for="organization_prefix">Prefix of Organization</label>
-							</div>
+							</div>							
 						</div>
 					</div>
 					<div class="card-action">
