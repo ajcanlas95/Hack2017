@@ -1,7 +1,7 @@
 <?php
 define('hostname', 'localhost');
-define('username', 'root');
-define('password', '');
+define('username', 'hackuser');
+define('password', 'H@cKpassw0rd');
 define('database', 'hack');
 
 $conn = mysqli_connect(hostname,username,password,database);
