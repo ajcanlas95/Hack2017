@@ -21,8 +21,11 @@ $resultRow = displayAllRows($conn);
 	
 // while ($dataRow = mysqli_fetch_assoc($resultRow)) {
 // 	foreach ($dataRow as $keyData => $valueData) {
-// 		echo $keyData."<br>".$valueData."";
+// 		echo $keyData."".$valueData."<br>";
 // 	}
+
+// 	echo $dataRow['id_basic']."<br>";
+	
 // 	echo "<br>";
 // }
 
