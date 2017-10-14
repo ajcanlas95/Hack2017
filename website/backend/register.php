@@ -11,8 +11,15 @@ if (isset($_POST['register'])) {
 	$eMail = validate($_POST['email']);
 	$cNumber = validate($_POST['contact_number']); 
 	$orgName = validate($_POST['organization']); 
-	$preOrg = validate($_POST['organization_prefix']);
+	$preOrg = "";
 	
+	$words = explode(" ", $orgName);
+
+	foreach ($words as $first_letter) {
+		$preOrg.=  $first_letter[0];
+		
+	}
+
 	$fName = ucwords($fName);
 	$mName = ucwords($mName);
 	$lName = ucwords($lName);
