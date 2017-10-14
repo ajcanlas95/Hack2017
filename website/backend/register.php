@@ -23,13 +23,13 @@ if (isset($_POST['register'])) {
 	$orgExists = checkOrganization($conn,$orgName);
 
 	if (mysqli_num_rows($orgExists)<1) {
-		$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
+		$registerInfoAndOrg = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
 
-		if ($registerInfo) {
-			$registerOrg = registerOrganization($conn,$orgName,$preOrg);
+		if ($registerInfoAndOrg) {
+			$registerInfoAndOrg = registerOrganization($conn,$orgName,$preOrg);
 
 			if ($registerOrg) {
-				echo "Successful Registration";
+				echo "Successful Registration and Organization";
 			}else{
 				echo "Org Registration Unsuccessful";
 			}
@@ -38,7 +38,10 @@ if (isset($_POST['register'])) {
 			echo "Info Registration Unsuccessful";
 		}
 	}else{
-		echo "Organization Exists";
+		$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
+		if ($registerInfo) {
+			echo "Successful Registration of Info";
+		}
 	}
 
 }
