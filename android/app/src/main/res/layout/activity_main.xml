@@ -9,33 +9,65 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="test.json.texter.MainActivity"
+    android:gravity="center"
+    android:animateLayoutChanges="true"
+    tools:context="hack2017.android.MainActivity"
     tools:ignore="HardcodedText">
     
-    <EditText
-        android:id="@+id/number"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/send"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:inputType="number"
-        android:hint="Phone Number"/>
-
-    <Button
-        android:id="@+id/send"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Send SMS"
-        android:onClick="click"/>
+        android:layout_centerHorizontal="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Email/Username"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/email">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:hint="Password"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/organization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/password"
+        android:visibility="gone">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Organization"/>
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
         android:layout_centerHorizontal="true"
-        android:text="Parse JSON Only"
-        android:onClick="parse"/>
+        android:layout_below="@+id/organization"
+        android:text="Login"/>
 
-</RelativeLayout>
+ </RelativeLayout>

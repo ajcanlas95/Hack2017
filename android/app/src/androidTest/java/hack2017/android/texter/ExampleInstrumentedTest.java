@@ -1,4 +1,4 @@
-package test.json.texter;
+package hack2017.android.texter;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

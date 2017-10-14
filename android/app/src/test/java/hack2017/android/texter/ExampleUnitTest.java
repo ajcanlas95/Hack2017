@@ -1,4 +1,4 @@
-package test.json.texter;
+package hack2017.android.texter;
 
 import org.junit.Test;
 

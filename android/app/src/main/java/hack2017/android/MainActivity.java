@@ -1,6 +1,8 @@
-package test.json.texter;
+package hack2017.android;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import hack2017.android.texter.R;
 
 public class MainActivity extends AppCompatActivity implements JSONFetcherListener
 {
@@ -26,16 +30,34 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        number = (EditText) findViewById(R.id.number);
+        final TextInputEditText email = (TextInputEditText) ((TextInputLayout)
+                findViewById(R.id.email)).getEditText();
+        final TextInputLayout organization = (TextInputLayout)
+                findViewById(R.id.organization);
+        email.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus)
+            {
+                if(!hasFocus)
+                {
+                    String inputText = email.getText().toString();
+                    if(!inputText.contains("@"))
+                        organization.setVisibility(View.VISIBLE);
+                    else
+                        organization.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
-    public void click(View v)
+    private void click()
     {
         sendSMS = true;
         fetchJSON();
     }
 
-    public void parse(View view)
+    private void parse()
     {
         sendSMS = false;
         fetchJSON();
