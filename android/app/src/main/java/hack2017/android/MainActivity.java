@@ -15,9 +15,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import hack2017.android.interfaces.JSONFetcherListener;
+import hack2017.android.interfaces.LoginVerifierListener;
 import hack2017.android.texter.R;
 
-public class MainActivity extends AppCompatActivity implements JSONFetcherListener
+public class MainActivity extends AppCompatActivity implements
+        JSONFetcherListener,
+        LoginVerifierListener
 {
     private EditText number;
     private String message;
@@ -62,9 +66,16 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
                 String emailInput = email.getText().toString(),
                        passwordInput = password.getText().toString(),
                        organizationInput = organization.getEditText().getText().toString();
-                new LoginVerifier().verify(emailInput, passwordInput, organizationInput);
+                new LoginVerifier(MainActivity.this, MainActivity.this).verify(emailInput, passwordInput, organizationInput);
             }
         });
+    }
+
+    @Override
+    public void checkRequestStatus(boolean isSuccess)
+    {
+        Toast.makeText(this, isSuccess? "Request Success" : "Request Failed",
+                Toast.LENGTH_SHORT).show();
     }
 
     private void click()

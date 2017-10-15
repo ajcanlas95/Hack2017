@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import test.json.texter.R;
+import hack2017.android.texter.R;
 
 public class Texter extends Fragment
 {

@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import hack2017.android.interfaces.JSONFetcherListener;
+
 class JSONFetcher extends AsyncTask<String, Void, Void>
 {
     private String json;
@@ -76,6 +78,7 @@ class JSONFetcher extends AsyncTask<String, Void, Void>
         return json;
     }
 
+    //TODO: Make global static method in utility class
     private String streamToJson(InputStream stream)
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
