@@ -24,14 +24,18 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
 
     private boolean sendSMS = true;
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextInputEditText email = (TextInputEditText) ((TextInputLayout)
-                findViewById(R.id.email)).getEditText();
+        final TextInputEditText
+              email = (TextInputEditText) ((TextInputLayout)
+                findViewById(R.id.email)).getEditText(),
+              password = (TextInputEditText) ((TextInputLayout)
+                findViewById(R.id.password)).getEditText();
         final TextInputLayout organization = (TextInputLayout)
                 findViewById(R.id.organization);
         email.setOnFocusChangeListener(new View.OnFocusChangeListener()
@@ -47,6 +51,18 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
                     else
                         organization.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String emailInput = email.getText().toString(),
+                       passwordInput = password.getText().toString(),
+                       organizationInput = organization.getEditText().getText().toString();
+                new LoginVerifier().verify(emailInput, passwordInput, organizationInput);
             }
         });
     }
@@ -84,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
 
     private void fetchJSON()
     {
-        String url = "http://192.168.1.6/Hack2017/database/test.php";
+        String url = "http://192.168.1.6/Hack2017/database/login.php";
         new JSONFetcher(this, new ProgressDialog(this)).execute(url);
     }
 
