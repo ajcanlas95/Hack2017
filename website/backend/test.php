@@ -1,7 +1,7 @@
 <?php
 require 'connect.php';
 $database = 'hack';
-$table = 'basic';
+$table = 'Basic';
 
 function displayAllColumn($conn,$database,$table){
 	$query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '$database' AND TABLE_NAME='$table'" ;
@@ -10,7 +10,7 @@ function displayAllColumn($conn,$database,$table){
 }
 
 function displayAllRows($conn){
-	$query = "select * from basic";
+	$query = "select * from Basic";
 
 	return mysqli_query($conn,$query);
 }

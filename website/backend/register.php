@@ -32,16 +32,16 @@ if (isset($_POST['register'])) {
 		$registerInfoAndOrg = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
 
 		if ($registerInfoAndOrg) {
-			$registerInfoAndOrg = registerOrganization($conn,$orgName,$preOrg);
+			$registerOrg = registerOrganization($conn,$orgName,$preOrg);
 
 			if ($registerOrg) {
 				echo "Successful Registration and Organization";
 			}else{
-				echo "Org Registration Unsuccessful";
+				echo "Org Registration Unsuccessful".mysqli_error($conn);
 			}
 
 		}else{
-			echo "Info Registration Unsuccessful";
+			echo "Info Registration Unsuccessful".mysqli_error($conn);
 		}
 	}else{
 		$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
