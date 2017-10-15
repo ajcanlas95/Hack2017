@@ -1,6 +1,8 @@
-package test.json.texter;
+package hack2017.android;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import hack2017.android.texter.R;
+
 public class MainActivity extends AppCompatActivity implements JSONFetcherListener
 {
     private EditText number;
@@ -20,22 +24,56 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
 
     private boolean sendSMS = true;
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        number = (EditText) findViewById(R.id.number);
+        final TextInputEditText
+              email = (TextInputEditText) ((TextInputLayout)
+                findViewById(R.id.email)).getEditText(),
+              password = (TextInputEditText) ((TextInputLayout)
+                findViewById(R.id.password)).getEditText();
+        final TextInputLayout organization = (TextInputLayout)
+                findViewById(R.id.organization);
+        email.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus)
+            {
+                if(!hasFocus)
+                {
+                    String inputText = email.getText().toString();
+                    if(!inputText.contains("@"))
+                        organization.setVisibility(View.VISIBLE);
+                    else
+                        organization.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String emailInput = email.getText().toString(),
+                       passwordInput = password.getText().toString(),
+                       organizationInput = organization.getEditText().getText().toString();
+                new LoginVerifier().verify(emailInput, passwordInput, organizationInput);
+            }
+        });
     }
 
-    public void click(View v)
+    private void click()
     {
         sendSMS = true;
         fetchJSON();
     }
 
-    public void parse(View view)
+    private void parse()
     {
         sendSMS = false;
         fetchJSON();
@@ -62,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements JSONFetcherListen
 
     private void fetchJSON()
     {
-        String url = "http://192.168.1.6/Hack2017/database/test.php";
+        String url = "http://192.168.1.6/Hack2017/database/login.php";
         new JSONFetcher(this, new ProgressDialog(this)).execute(url);
     }
 

@@ -1,8 +1,7 @@
-package test.json.texter;
+package hack2017.android;
 
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
