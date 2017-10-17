@@ -1,8 +1,8 @@
--- MySQL dump 10.14  Distrib 5.5.56-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.19-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: hack
+-- Host: localhost    Database: localhost
 -- ------------------------------------------------------
--- Server version	5.5.56-MariaDB
+-- Server version	10.1.19-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Account`
+-- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `Account`;
+DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Account` (
+CREATE TABLE `account` (
   `id_account` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_basic` int(10) unsigned NOT NULL,
   `id_organization` int(10) unsigned NOT NULL,
@@ -31,20 +31,20 @@ CREATE TABLE `Account` (
   KEY `FK_BasicAccount` (`id_basic`),
   KEY `FK_OrganizationAccount` (`id_organization`),
   KEY `FK_RoleAccount` (`id_role`),
-  CONSTRAINT `FK_BasicAccount` FOREIGN KEY (`id_basic`) REFERENCES `Basic` (`id_basic`),
-  CONSTRAINT `FK_OrganizationAccount` FOREIGN KEY (`id_organization`) REFERENCES `Organization` (`id_organization`),
-  CONSTRAINT `FK_RoleAccount` FOREIGN KEY (`id_role`) REFERENCES `Role` (`id_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_BasicAccount` FOREIGN KEY (`id_basic`) REFERENCES `basic` (`id_basic`),
+  CONSTRAINT `FK_OrganizationAccount` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`),
+  CONSTRAINT `FK_RoleAccount` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `Basic`
+-- Table structure for table `basic`
 --
 
-DROP TABLE IF EXISTS `Basic`;
+DROP TABLE IF EXISTS `basic`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Basic` (
+CREATE TABLE `basic` (
   `id_basic` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fn_name` varchar(100) NOT NULL,
   `mn_name` varchar(100) DEFAULT NULL,
@@ -54,55 +54,55 @@ CREATE TABLE `Basic` (
   `email` varchar(100) DEFAULT NULL,
   `contact_number` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_basic`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `Login`
+-- Table structure for table `login`
 --
 
-DROP TABLE IF EXISTS `Login`;
+DROP TABLE IF EXISTS `login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Login` (
+CREATE TABLE `login` (
   `id_login` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `id_account` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_login`),
   KEY `FK_AccountLogin` (`id_account`),
-  CONSTRAINT `FK_AccountLogin` FOREIGN KEY (`id_account`) REFERENCES `Account` (`id_account`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_AccountLogin` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `Organization`
+-- Table structure for table `organization`
 --
 
-DROP TABLE IF EXISTS `Organization`;
+DROP TABLE IF EXISTS `organization`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Organization` (
+CREATE TABLE `organization` (
   `id_organization` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `organization_name` varchar(100) NOT NULL,
   `organization_table_prefix` varchar(100) NOT NULL,
   PRIMARY KEY (`id_organization`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `Role`
+-- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `Role`;
+DROP TABLE IF EXISTS `role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Role` (
+CREATE TABLE `role` (
   `id_role` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(100) NOT NULL,
   `role_level` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -114,4 +114,4 @@ CREATE TABLE `Role` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-10 10:44:11
+-- Dump completed on 2017-10-17 21:39:33
