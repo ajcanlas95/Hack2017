@@ -1,7 +1,5 @@
 <?php
-function parseTest($conn){
-	$query = "select * from test";
-
-	return mysqli_query($conn,$query);
+function is_ajax() {
+  return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 }
 ?>

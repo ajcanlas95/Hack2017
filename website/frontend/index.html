@@ -30,19 +30,19 @@
 			<div id="login" class="modal">
 				<div class="modal-content">
 					<h4>Hack 2017</h4>
-					<a href="registration.php" class="btn-floating waves-effect waves-light red right pulse"><i class="material-icons">person_add</i></a>
+					<a href="registration.html" class="btn-floating waves-effect waves-light red right pulse"><i class="material-icons">person_add</i></a>
 					<div class="row">
 						<!-- Tab Structure-->
 						<ul class="tabs">
 							<li class="tab col s12"><a href="#login">Login</a></li>
 						</ul>
 						<!-- Login using Email -->
-						<form action="../backend/login.php" method="POST">
+						<form action="../backend/login.php" class="user_login" method="POST" accept-charset="utf-8">
 							<div id="login" class="row">
 								<div class="row">
 									<div class="input-field col s12">
-										<input name="email" id="emailadd" type="email" class="validate" required="true">
-										<label for="emailadd">Email Address</label>
+										<input name="name" id="name" type="email" class="validate" required="true">
+										<label for="name">Email Address</label>
 									</div>
 								</div>
 								<div class="row">
@@ -52,7 +52,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<button class="right btn waves-effect waves-light" type="submit" name="desktop-login">Submit
+									<button class="right btn waves-effect waves-light" type="submit" name="submit">Submit
 										<i class="material-icons right">send</i>
 									</button>	
 								</div>
@@ -69,21 +69,21 @@
 					<div class="card">
 						<div class="card-content">
 								<div id="withoutorg" class="row">
-									<form action="../backend/login-mobile.php" method="POST">
+									<form action="../backend/login.php" class="user_login" method="POST" accept-charset="utf-8">
 										<div class="row">
 											<div class="input-field col s12">
-												<input name="mobile_email" id="mobile_email" type="email" class="validate" required="true">
-												<label for="mobile_email">Email Address</label>
+												<input name="name" id="name" type="email" class="validate" required="true">
+												<label for="name">Email Address</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<input name="mobile_password" id="mobile_password" type="password" class="validate" required="true">
-												<label for="mobile_password">Password</label>
+												<input name="password" id="password" type="password" class="validate" required="true">
+												<label for="password">Password</label>
 											</div>
 										</div>
 										<div class="row">
-											<button class="right btn waves-effect waves-light" type="submit" name="mobile-login">Submit
+											<button class="right btn waves-effect waves-light" type="submit" name="submit">Submit
 												<i class="material-icons right">send</i>
 											</button>	
 										</div>
@@ -93,7 +93,7 @@
 					</div>
 				</div>		
 				<div class="modal-footer">
-					<a href="registration.php" class="modal-action modal-close btn-floating waves-effect waves-light red right"><i class="material-icons">person_add</i></a>
+					<a href="registration.html" class="modal-action modal-close btn-floating waves-effect waves-light red right"><i class="material-icons">person_add</i></a>
 				</div>
 			</div>
 
@@ -129,7 +129,9 @@
 			<!--Customized JS for Hack2017-->
 			<script type="text/javascript" src="materialize/js/Hack2017.js"></script>
 			<!-- JS for parsing data -->
-			<script type="text/javascript" src="materialize/js/parseBasic.js"></script>
+			<script type="text/javascript" src="js/parseBasic.js"></script>
+			<!-- JS for Login -->
+			<script type="text/javascript" src="js/login.js"></script>
 		</body>
 
 	</html>

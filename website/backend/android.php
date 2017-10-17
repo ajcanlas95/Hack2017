@@ -1,29 +1,28 @@
 <?php
 
-$email = $_GET['email'];
-$password = $_GET['password'];
+require 'connect.php';
+require 'function/user.function.php';
 
-// if (isset($_POST["json"])) {
-	// $obj = json_decode($_POST["json"]);
+$json = file_get_contents('php://input');
+$obj = json_decode($json);
 
-	// $email = $obj->email;
-	// $password = $obj->password 
+$email = $obj['email'];
+$password = $obj['password'];
+$data = [];
+$result = login($conn,$email,$password);
 
-$data = array('email'=>$email ,'password'=>$password);
+	if (mysqli_num_rows($result)>0) {
+		while ($value = mysqli_fetch_assoc($result)) {
+		 	array_push($data,['email'=>$value['username'] ,'password'=>$value['password'] ]);
+		 
+		 } 
+	}else{
+		echo "login failed!";
+	}
 
 $result = json_encode($data);
 
 echo $result;
-
-
 	
-// }
-
-// $json = file_get_contents('php://input');
-
-// foreach($data as $key => $value ){
-// 	echo "Key= ".$key."<br>"."Value= ".$value."<br>";
-// }
-
 
 ?>
