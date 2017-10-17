@@ -19,23 +19,23 @@
 		type: "GET",
 		url: "../backend/basic.row.php",
 		dataType: "json",
-		success: function(JSONObject) {
-			var txt = "";
+		success: function(data) {
 
-			// Loop through Object and create txt
-			for (var key in JSONObject) {
-				if (JSONObject.hasOwnProperty(key)) {
-					txt += "<tr>";
-					txt += "<td>" + JSONObject[key]["id_basic"] + "</td>";
-					txt += "<td>" + JSONObject[key]["fn_name"] + "</td>";
-					txt += "<td>" + JSONObject[key]["mn_name"] + "</td>";
-					txt += "<td>" + JSONObject[key]["ln_name"] + "</td>";
-					txt += "<td>" + JSONObject[key]["nn_name"] + "</td>";
-					txt += "<td>" + JSONObject[key]["pof_name"] + "</td>";
-					txt += "<td>" + JSONObject[key]["email"] + "</td>";
-					txt += "<td>" + JSONObject[key]["contact_number"] + "</td>";
-					txt += "</tr>";
-				}
+			var txt = "";
+			
+			for (var i in data) {
+				var objectColumn = data[i]['column'];
+				var objectRow = data[i]['row'];
+					for (var keyRow in objectRow) {
+						txt += "<tr>";
+						for (var keyColumn in objectColumn){
+							var column = objectColumn[keyColumn]['COLUMN_NAME'];
+							txt += "<td>" + objectRow[keyRow][column]+ "</td>";
+						}
+						txt += "</tr>";
+					}
+				
+				
 			}
 
 			// Replace table’s tbody html with txt
