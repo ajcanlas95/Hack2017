@@ -52,7 +52,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12" style="display: none;">
+									<div class="input-field col s12" id="input_organization">
 										<input name="organization" id="organization" type="text" class="validate">
 										<label for="organization">Organization</label>
 									</div>
@@ -75,22 +75,22 @@
 					<div class="card">
 						<div class="card-content">
 								<div id="withoutorg" class="row">
-									<form action="../backend/login.php" class="user_login" method="POST" accept-charset="utf-8">
+									<form action="../backend/login.php" class="mobile_login" method="POST" accept-charset="utf-8">
 										<div class="row">
 											<div class="input-field col s12">
-												<input name="name" id="name" type="text" class="validate" required="true">
+												<input name="name" id="mobile_name" type="text" class="validate" required="true">
 												<label for="name">Email Address</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<input name="password" id="password" type="password" class="validate" required="true">
+												<input name="password" id="mobile_password" type="password" class="validate" required="true">
 												<label for="password">Password</label>
 											</div>
 										</div>
 										<div class="row">
-											<div class="input-field col s12">
-												<input name="organization" id="organization" type="text" class="validate" >
+											<div class="input-field col s12" id="organization_mobile">
+												<input name="organization" id="mobile_organization" type="text" class="validate" >
 												<label for="organization">Organization</label>
 											</div>
 										</div>
@@ -144,6 +144,7 @@
 			<script type="text/javascript" src="js/parseBasic.js"></script>
 			<!-- JS for Login -->
 			<script type="text/javascript" src="js/login.js"></script>
+			<script type="text/javascript" src="js/login.mobile.js"></script>
 		</body>
 
 	</html>

@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12">
+						<div class="input-field col s12" id="input_organization">
 							<input name="organization" id="organization" type="text" class="validate">
 							<label for="organization">Organization</label>
 						</div>
@@ -45,6 +45,16 @@
 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 <script type="text/javascript">
 $("document").ready(function(){
+	$("#input_organization").hide();
+	$("#name").keyup(function(){
+		var name = $('#name').val();
+		var match = name.match(/@/g);
+		if (match) {
+			$("#input_organization").hide();
+		}else{
+			$("#input_organization").show();
+		}
+	});
   $(".user_login").submit(function(){
     var data = {
       "action": "test"
