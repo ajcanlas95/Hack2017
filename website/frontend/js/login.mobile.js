@@ -1,12 +1,13 @@
 $("document").ready(function(){
   $("#organization_mobile").hide();
-  $("#mobile_name").keyup(function(){
+  $("#mobile_name").focusout(function(){
     var name = $('#mobile_name').val();
     var match = name.match(/@/g);
     if (match) {
-      $("#organization_mobile").hide();
+      $("#organization_mobile").fadeOut();
+       $('#mobile_organization').val("");
     }else{
-      $("#organization_mobile").show();
+      $("#organization_mobile").fadeIn();
     }
   });
   $(".mobile_login").submit(function(){

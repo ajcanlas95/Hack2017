@@ -1,12 +1,13 @@
 $("document").ready(function(){
   $("#input_organization").hide();
-  $("#name").keyup(function(){
+  $("#name").focusout(function(){
     var name = $('#name').val();
     var match = name.match(/@/g);
     if (match) {
-      $("#input_organization").hide();
+      $("#input_organization").fadeOut();
+      $('#organization').val("");
     }else{
-      $("#input_organization").show();
+      $("#input_organization").fadeIn();
     }
   });
   $(".user_login").submit(function(){
