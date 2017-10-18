@@ -11,7 +11,7 @@ $("document").ready(function(){
       data: data,
       success: function(data) {
         for (var key in data) {
-          Materialize.toast("Registration of "+data[key]['data']+data[key]['result'], 3000, 'rounded'); 
+          Materialize.toast("Registration of "+data[key]['data']+" "+data[key]['result'], 3000, 'rounded'); 
         }
       }
     });

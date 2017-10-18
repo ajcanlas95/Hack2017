@@ -16,7 +16,7 @@
 				<form action="../backend/login.php" class="user_login" method="POST" accept-charset="utf-8">
 					<div class="row">
 						<div class="input-field col s12">
-							<input name="name" id="name" type="email" class="validate" required="true">
+							<input name="name" id="name" type="text" class="validate" required="true">
 							<label for="name">Email Address</label>
 						</div>
 					</div>
@@ -24,6 +24,12 @@
 						<div class="input-field col s12">
 							<input name="password" id="password" type="password" class="validate" required="true">
 							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input name="organization" id="organization" type="text" class="validate">
+							<label for="organization">Organization</label>
 						</div>
 					</div>
 					<div class="row">
@@ -39,24 +45,40 @@
 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 <script type="text/javascript">
 $("document").ready(function(){
-	$(".user_login").submit(function(){
-		var data = {
-			"action": "test"
-		};
-		data = $(this).serialize() + "&" + $.param(data);
-		$.ajax({
+  $(".user_login").submit(function(){
+    var data = {
+      "action": "test"
+    };
+    data = $(this).serialize() + "&" + $.param(data);
+    value = $('#organization').val().length;
+    if (value === 0) {
+    	$.ajax({
 			type: "POST",
 			dataType: "json",
-			url: "../backend/login.php", //Relative or absolute path to response.php file
+			url: "../backend/login.without.org.php", //Relative or absolute path to response.php file
 			data: data,
 			success: function(data) {
 				for (var key in data) {
-					Materialize.toast("login "+data[key]['result'], 3000, 'rounded'); 
+					Materialize.toast("login "+data[key].result, 3000, 'rounded'); 
 				}
 			}
-		});
-		return false;
-	});
+	    });
+    }else{
+    	$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "../backend/login.with.org.php", //Relative or absolute path to response.php file
+			data: data,
+			success: function(data) {
+				for (var key in data) {
+					Materialize.toast("login "+data[key].result, 3000, 'rounded'); 
+				}
+			}
+	    });
+    }
+    
+    return false;
+  });
 });
 </script>
 </body>

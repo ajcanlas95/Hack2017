@@ -1,11 +1,11 @@
 <?php
 function login($conn,$email,$password){
-	$query = "select * from Login where username = '$email' and password = '$password'";
+	$query = "select * FROM ((Account INNER JOIN Login ON Account.id_account = Login.id_account) INNER JOIN Basic ON Account.id_basic = Basic.id_basic) where Basic.email='$email' and Login.password='$password'";
 
 	return mysqli_query($conn,$query);
 }
 function loginEmail($conn,$email,$organization,$password){
-	$query = "select * from Account a, Login l, Organization o where l.username = '$email' and l.password = '$password' OR o.organization_name = '$organization' OR o.organization_table_prefix = '$organization' and l.id_account = a.id_account and a.id_organization = o.id_organization";
+	$query  = "select * from ((Account INNER JOIN Login ON Account.id_account = Login.id_account) INNER JOIN Organization ON Account.id_organization = Organization.id_organization) where Login.username='$email' and Organization.organization_name='$organization' and Login.password='$password'";
 
 	return mysqli_query($conn,$query);
 }
