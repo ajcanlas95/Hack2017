@@ -9,12 +9,12 @@ $("document").ready(function(){
       $("#organization_mobile").show();
     }
   });
-  $(".user_login").submit(function(){
+  $(".mobile_login").submit(function(){
     var data = {
       "action": "test"
     };
     data = $(this).serialize() + "&" + $.param(data);
-    value = $('#organization').val().length;
+    value = $('#mobile_organization').val().length;
     if (value === 0) {
       $.ajax({
       type: "POST",
