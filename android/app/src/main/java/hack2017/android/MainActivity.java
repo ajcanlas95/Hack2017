@@ -1,19 +1,21 @@
 package hack2017.android;
 
-import android.app.ProgressDialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import hack2017.android.interfaces.JSONFetcherListener;
 import hack2017.android.interfaces.LoginVerifierListener;
@@ -63,10 +65,18 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v)
             {
-                String emailInput = email.getText().toString(),
-                       passwordInput = password.getText().toString(),
-                       organizationInput = organization.getEditText().getText().toString();
-                new LoginVerifier(MainActivity.this, MainActivity.this).verify(emailInput, passwordInput, organizationInput);
+//                String emailInput = email.getText().toString(),
+//                       passwordInput = password.getText().toString(),
+//                       organizationInput = organization.getEditText().getText().toString();
+//                new LoginVerifier(MainActivity.this, MainActivity.this)
+//                        .verify(emailInput, passwordInput, organizationInput);
+
+                sendSMS();
+
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
     }
@@ -92,27 +102,49 @@ public class MainActivity extends AppCompatActivity implements
 
     private void sendSMS()
     {
-        String number = this.number.getText().toString();
+        message = "Message";
 
+        PendingIntent sentPendingIntent = PendingIntent.getBroadcast
+                (this, 0, new Intent("SMS_SENT"), 0);
+
+        registerReceiver(new BroadcastReceiver()
+        {
+            @Override
+            public void onReceive(Context context, Intent intent)
+            {
+                switch (getResultCode())
+                {
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        Toast.makeText(MainActivity.this, "Generic Failure", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        Toast.makeText(MainActivity.this, "No Service", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        Toast.makeText(MainActivity.this, "Radio off", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }, new IntentFilter("SMS_SENT"));
+
+        String number = "09758718327";
         SmsManager smsManager = SmsManager.getDefault();
-
         try
         {
-            smsManager.sendTextMessage(number, null, message, null, null);
-            Toast.makeText(this, "SMS sent!", Toast.LENGTH_SHORT).show();
+            smsManager.sendTextMessage(number, null, message, sentPendingIntent, null);
+//            Toast.makeText(this, "SMS sent!", Toast.LENGTH_SHORT).show();
         }
-        catch (Exception e)
-        {
-            Toast.makeText(this, "SMS not sent.", Toast.LENGTH_SHORT).show();
-        }
+        catch (Exception ignored) {}
 
-        this.number.setText("");
+//        this.number.setText("");
     }
 
     private void fetchJSON()
     {
         String url = "http://192.168.1.6/Hack2017/database/login.php";
-        new JSONFetcher(this, new ProgressDialog(this)).execute(url);
+//        new JSONFetcher(this, new ProgressDialog(this)).execute(url);
     }
 
     @Override
@@ -129,12 +161,12 @@ public class MainActivity extends AppCompatActivity implements
             "user_id"
         };
 
-        ArrayList<HashMap<String, String>> items = JSONParser.parse(json, keys);
-        for (HashMap<String, String> item : items)
-        {
-            for(String key : keys)
-                message += item.get(key) + "\n";
-        }
+//        HashMap<String, String> items = JSONParser.parse(json, keys);
+//        for (HashMap<String, String> item : items)
+//        {
+//            for(String key : keys)
+//                message += item.get(key) + "\n";
+//        }
 
         Log.d("Parsed JSON", message);
 

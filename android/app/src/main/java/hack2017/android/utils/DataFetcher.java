@@ -1,4 +1,4 @@
-package hack2017.android;
+package hack2017.android.utils;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -14,7 +14,7 @@ import java.net.URL;
 
 import hack2017.android.interfaces.JSONFetcherListener;
 
-class JSONFetcher extends AsyncTask<String, Void, Void>
+class DataFetcher extends AsyncTask<String, Void, Void>
 {
     private String json;
     private boolean fetched = false;
@@ -22,7 +22,7 @@ class JSONFetcher extends AsyncTask<String, Void, Void>
     private JSONFetcherListener listener;
     private ProgressDialog dialog;
 
-    JSONFetcher(JSONFetcherListener listener, ProgressDialog dialog)
+    DataFetcher(JSONFetcherListener listener, ProgressDialog dialog)
     {
         this.listener = listener;
         this.dialog = dialog;
@@ -71,7 +71,7 @@ class JSONFetcher extends AsyncTask<String, Void, Void>
         }
         catch (IOException e)
         {
-            Log.d("JSONFetcher", "Cannot fetch JSON");
+            Log.d("DataFetcher", "Cannot fetch JSON");
             e.printStackTrace();
         }
 

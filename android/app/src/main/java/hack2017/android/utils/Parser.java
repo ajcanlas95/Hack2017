@@ -1,4 +1,4 @@
-package hack2017.android;
+package hack2017.android.utils;
 
 import android.util.Log;
 
@@ -8,11 +8,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class JSONParser
+class Parser
 {
-    static ArrayList<HashMap<String, String>> parse(String json, String[] keys)
+    static HashMap<String, String> parse(String json, String[] keys)
     {
-        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        HashMap<String, String> map = new HashMap<>();
 
         if(json != null)
         {
@@ -20,21 +20,16 @@ class JSONParser
             {
                 JSONObject jsonObject = new JSONObject(json);
 
-                HashMap<String, String> pair = new HashMap<>();
-
                 for(String key : keys)
-                    pair.put(key, jsonObject.getString(key));
-
-
-                list.add(pair);
+                    map.put(key, jsonObject.getString(key));
             }
             catch (JSONException e)
             {
-                Log.d("JSONParser", "Cannot parse JSON");
+                Log.d("Parser", "Cannot parse JSON");
                 e.printStackTrace();
             }
         }
 
-        return list;
+        return map;
     }
 }
