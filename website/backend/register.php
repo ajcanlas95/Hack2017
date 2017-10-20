@@ -13,7 +13,7 @@ if (isset($_POST['register'])) {
 	$orgName = validate($_POST['organization']); 
 	$preOrg = "";
 	$words = explode(" ", $orgName);
-
+	$data = [];
 	foreach ($words as $first_letter) {
 		$preOrg.=  $first_letter[0];
 		
@@ -35,20 +35,26 @@ if (isset($_POST['register'])) {
 			$registerOrg = registerOrganization($conn,$orgName,$preOrg);
 
 			if ($registerOrg) {
-				echo "Successful Registration and Organization";
+				array_push($data, ["result" => "success","data" => "information and organization"]);
+				
 			}else{
-				echo "Org Registration Unsuccessful".mysqli_error($conn);
+				array_push($data, ["result" => "success","data" => "organization"]);
+				
 			}
 
 		}else{
-			echo "Info Registration Unsuccessful".mysqli_error($conn);
+			array_push($data, ["result" => "failed","data" => "information"]);
+			
 		}
 	}else{
 		$registerInfo = registerBasic($conn,$fName,$mName,$lName,$nName,$pName,$eMail,$cNumber);
 		if ($registerInfo) {
-			echo "Successful Registration of Info";
+			array_push($data, ["result" => "success","data" => "information"]);
+			
 		}
 	}
+	$return = json_encode($data);
+	echo $return;
 
 }
 
